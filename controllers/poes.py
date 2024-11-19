@@ -11,6 +11,7 @@ def main():
     sheet = wb.sheets[0]
 
     PWF =  'Pwf'
+    CAUDAL = 'Caudal'
     qmax = 250
     pr = 2400
 
@@ -19,8 +20,9 @@ def main():
     for pwf in valuesPwf:
         q0 = caudal.caudal(qmax, pr, pwf)
         print(q0)
-        valoresCaudal.append(q0)
+        valoresCaudal.append([q0])
 
+    sheet.range(CAUDAL).value = valoresCaudal
     print(valoresCaudal)
 
     chart1 = sheet.charts.add()
